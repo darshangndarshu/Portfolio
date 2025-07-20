@@ -8,7 +8,7 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: var(--bg-color);
+  background: var(--light-gradient-bg);
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
   line-height: 1.6;
@@ -16,21 +16,24 @@ body {
 
 /* === Light Theme === */
 :root {
-  --bg-color: #f0f4f8;
+  /* --bg-color: #f0f4f8; */
+  --light-gradient-bg: linear-gradient(to right, #c8c829, #e264cd); /* light yellow to light pink */
   --text-color: #111;
   --primary-color:#2b6cb0;
   --secondary-color: #ffffff;
   --accent-color: #edf2f7;
-  --card-bg: #ffffff;
-  --footer-bg: #2b6cb0;
+  --card-bg: 	#FAFAD2;
+  --footer-bg: #1E1E2F;
   --footer-text: #ffffff;
-  --header-bg: #1e3a5f;
-  --intro-bg: #e2e8f0;
+  --header-bg: #1E1E2F;       /* #29a347;*/
+  --intro-bg: 	#FAFAD2;
+  --heading-color: #222;
+  /* --light-gradient-bg: linear-gradient(to right, #c8c829, #e264cd);  */
 }
 
 /* === Dark Theme === */
 body.dark {
-  --bg-color: #1e1e1e;
+  --light-gradient-bg: #1e1e1e;
   --text-color: #e0e0e0;
   --primary-color: #63b3ed;
   --secondary-color: #2d3748;
@@ -40,6 +43,7 @@ body.dark {
   --footer-text: #cccccc;
   --header-bg: #000000;
   --intro-bg: #2c2c2c;
+  --heading-color: #f0f0f0;
 }
 
 /* === Sections === */
@@ -64,7 +68,7 @@ body.dark {
 
 .navbar .logo {
   font-size: 1.5em;
-  color: #ffffff;       /*var(--primary-color);*/
+  color: #ffffff;      
 }
 
 .nav-links {
@@ -91,13 +95,37 @@ body.dark {
   color: var(--footer-text);
 }
 
-/* === Intro Section === */
+/* === Intro Section === */  
 .intro {
   text-align: center;
   margin-top: 80px;
-  background-color: var(--intro-bg);
-  padding: 40px 20px;
+  padding: 80px 20px;
   border-radius: 10px;
+  background-image: url('pexels-goumbik-574073.jpg'); /* 🔁 Change this path to your actual image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white; /* Ensures text is readable */
+  position: relative;
+  z-index: 1;
+}
+
+.intro::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay for contrast */
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.intro h2,
+.intro p {
+  position: relative;
+  z-index: 1;
 }
 
 .intro h2 {
@@ -109,6 +137,7 @@ body.dark {
   font-size: 1.2em;
   margin-bottom: 20px;
 }
+ 
 
 /* === Button Style === */
 .btn {
@@ -168,62 +197,74 @@ body.dark {
 }
 
 /* === Skills Section === */
-.skills-section {
-  background-color: var(--intro-bg);
-  padding: 60px 20px;
-}
-
-.skills-list {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 20px;
-  justify-content: center;
-}
-
-.skills-list li {
-  background: var(--accent-color);
-  padding: 10px 16px;
-  border-radius: 5px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-  font-weight: 500;
-}
-
-/* === Technologies Section === */
+.skills-section,
 .technologies-section {
-  background-color: var(--card-bg);
-  padding: 60px 20px;
+  text-align: center;
+  margin: 60px auto;
+  background-image: url('pexels-fauxels-3184299.jpg'); /* replace with your actual image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 40px 20px;
+  border-radius: 10px;
+  max-width: 1100px; /* Limits width like intro section */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+.skills-section h2,
+.technologies-section h2 {
+  font-size: 2.2em;
+  margin-bottom: 20px;
+}
+
+.skills-list,
 .technologies-list {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  margin-top: 20px;
   justify-content: center;
+  padding: 0;
+  margin-top: 20px;
 }
 
+.skills-list li,
 .technologies-list li {
-  background: var(--accent-color);
+  background: rgba(0, 0, 0, 0.605);
   padding: 10px 16px;
-  border-radius: 5px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  color: #fff;
   font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  backdrop-filter: blur(6px);
 }
-
 
 /* === Contact Form === */
+.contact {
+  background-size: cover;
+  background-position: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: black; /* Text color contrast */
+}
+#contact-section h2 {
+  font-size: 2.8em; /* Bigger size */
+  color: var(--heading-color); /* Use a theme-safe variable */
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Slight glow for visibility */
+}
+
+
 #contact-form {
-  background: var(--card-bg);
+  background: rgba(0, 0, 0, 0.801); /* semi-transparent form background */
   padding: 40px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   display: flex;
   flex-direction: column;
   gap: 15px;
-  max-width: 700px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -231,17 +272,26 @@ body.dark {
 #contact-form textarea {
   padding: 12px;
   border-radius: 6px;
-  border: 1px solid #ccc;
-  background: var(--accent-color);
-  color: var(--text-color);
+  border: none;
   font-size: 1em;
+  background: #fff;
+  color: #000;
 }
 
-/* === Resume Download Section === */
-/* .resume-section {
-  text-align: center;
-  margin-top: 40px;
-} */
+#contact-form button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  font-size: 1em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#contact-form button:hover {
+  background-color: #45a049;
+}
+
 
 /* === Footer === */
 footer {
@@ -340,6 +390,9 @@ footer {
   padding: 40px 20px;
   background-color: var(--intro-bg);
   border-radius: 10px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .resume-section h2 {
